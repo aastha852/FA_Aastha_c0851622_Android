@@ -17,14 +17,14 @@ import java.util.ArrayList;
 
 public class ViewAdapter extends RecyclerView.Adapter<ViewAdapter.MyViewHolder> {
 
-    Context context;
-    Activity activity;
+    Context cont;
+    Activity act;
     ArrayList<String> id,name, latitude, longitude;
     private MyViewHolder holder;
 
-    ViewAdapter(Activity activity, Context context, ArrayList id, ArrayList name, ArrayList latitude, ArrayList longitude){
-        this.activity=activity;
-        this.context=context;
+    ViewAdapter(Activity activity, Context cont, ArrayList id, ArrayList name, ArrayList latitude, ArrayList longitude){
+        this.act =activity;
+        this.cont = cont;
         this.id=id;
         this.name=name;
         this.latitude = latitude;
@@ -34,7 +34,7 @@ public class ViewAdapter extends RecyclerView.Adapter<ViewAdapter.MyViewHolder> 
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LayoutInflater inflater = LayoutInflater.from(context);
+        LayoutInflater inflater = LayoutInflater.from(cont);
         View v = inflater.inflate(R.layout.individual_item,parent,false);
         return new MyViewHolder(v);
     }
@@ -50,13 +50,13 @@ public class ViewAdapter extends RecyclerView.Adapter<ViewAdapter.MyViewHolder> 
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(context, MapsActivity.class);
+                Intent intent = new Intent(cont, MapsActivity.class);
                 intent.putExtra("id",String.valueOf(id.get(position)));
                 intent.putExtra("name",String.valueOf(name.get(position)));
                 intent.putExtra("lati",String.valueOf(latitude.get(position)));
                 intent.putExtra("lng",String.valueOf(longitude.get(position)));
 
-                activity.startActivityForResult(intent,1);
+                act.startActivityForResult(intent,1);
             }
         });
     }
