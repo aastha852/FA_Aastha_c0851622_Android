@@ -39,6 +39,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private Marker currentLocation;
     List<Marker> locations = new ArrayList();
 
+    DBHelper DB=new DBHelper(MapsActivity.this);
+
     FloatingActionButton fabList;
     MaterialButton btnSatelite;
     MaterialButton btnHybrid;
@@ -86,13 +88,20 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         e.printStackTrace();
                     }
                     Address address = addressList.get(0);
+                    System.out.println(addressList.get(0));
+
 
                     // on below line we are creating a variable for our location
                     // where we will add our locations latitude and longitude.
                     LatLng latLng = new LatLng(address.getLatitude(), address.getLongitude());
+                    DB.insertuserdata(location,latLng.latitude,latLng.longitude);
+                    System.out.println();
 
                     // on below line we are adding marker to that position.
                     mMap.addMarker(new MarkerOptions().position(latLng).title(location));
+
+//inserting user data
+
 
                     // below line is to animate camera to that position.
                     mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10));
