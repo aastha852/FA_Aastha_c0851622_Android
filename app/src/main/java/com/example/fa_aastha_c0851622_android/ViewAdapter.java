@@ -40,13 +40,13 @@ public class ViewAdapter extends RecyclerView.Adapter<ViewAdapter.MyViewHolder> 
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, @SuppressLint("RecyclerView") int position) {
+    public void onBindViewHolder(@NonNull MyViewHolder h, @SuppressLint("RecyclerView") int position) {
 
-        holder.idtxt.setText(String.valueOf(id.get(position)));
-        holder.nametxt.setText(String.valueOf(name.get(position)));
-        holder.latitxt.setText(String.valueOf(latitude.get(position)));
-        holder.longtxt.setText(String.valueOf(longitude.get(position)));
-        holder.mainlayout.setOnClickListener(new View.OnClickListener() {
+        h.idtxt.setText(String.valueOf(id.get(position)));
+        h.nametxt.setText(String.valueOf(name.get(position)));
+        h.latitxt.setText(String.valueOf(latitude.get(position)));
+        h.longtxt.setText(String.valueOf(longitude.get(position)));
+        h.mainlayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
