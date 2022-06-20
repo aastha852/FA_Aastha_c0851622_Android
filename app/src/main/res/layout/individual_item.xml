@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:layout_marginTop="15dp"
-    android:id="@+id/mainlayout">
+    android:id="@+id/individual_item">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"

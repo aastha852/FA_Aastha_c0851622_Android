@@ -46,7 +46,7 @@ public class ViewAdapter extends RecyclerView.Adapter<ViewAdapter.MyViewHolder> 
         h.nametxt.setText(String.valueOf(name.get(position)));
         h.latitxt.setText(String.valueOf(latitude.get(position)));
         h.longtxt.setText(String.valueOf(longitude.get(position)));
-        h.mainlayout.setOnClickListener(new View.OnClickListener() {
+        h.individualitem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -69,7 +69,7 @@ public class ViewAdapter extends RecyclerView.Adapter<ViewAdapter.MyViewHolder> 
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         TextView idtxt,nametxt,longtxt,latitxt;
-        LinearLayout mainlayout;
+        LinearLayout individualitem;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -77,7 +77,7 @@ public class ViewAdapter extends RecyclerView.Adapter<ViewAdapter.MyViewHolder> 
             nametxt= itemView.findViewById(R.id.dispName);
             latitxt= itemView.findViewById(R.id.dispLat);
             longtxt= itemView.findViewById(R.id.dispLng);
-            mainlayout = itemView.findViewById(R.id.mainlayout);
+            individualitem = itemView.findViewById(R.id.individual_item);
         }
     }
 
