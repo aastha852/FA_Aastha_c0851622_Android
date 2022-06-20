@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentActivity;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -15,6 +16,7 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -42,7 +44,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     DBHelper DB;
 
-    FloatingActionButton fabList;
+    FloatingActionButton favList;
     MaterialButton btnSatelite;
     MaterialButton btnHybrid;
     MaterialButton btnTerrian;
@@ -120,7 +122,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         // at last we calling our map fragment to update.
         mapFragment.getMapAsync(this);
 
-        fabList = findViewById(R.id.fabList);
+        favList = findViewById(R.id.fabList);
+        favList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MapsActivity.this, ListActivity.class);
+                startActivity(intent);
+            }
+        });
         btnSatelite = findViewById(R.id.button_satelite);
         btnHybrid = findViewById(R.id.button_hybrid);
         btnTerrian = findViewById(R.id.button_terrain);

@@ -86,7 +86,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public Cursor getdata () {
         SQLiteDatabase DB = this.getWritableDatabase();
-        Cursor cursor = DB.rawQuery("Select * from Userdetails", null);
+        Cursor cursor = DB.rawQuery("Select * from LocationDB", null);
         return cursor;
     }
 }
