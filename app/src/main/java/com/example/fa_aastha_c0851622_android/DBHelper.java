@@ -10,26 +10,22 @@ public class DBHelper extends SQLiteOpenHelper {
     private Context c;
     public static final String DATABASE_NAME="Locationdb";
     public static final int DATABASE_VERSION=1;
-    public static final String TABLE_NAME="favouriteloc";
+    public static final String TABLE_NAME="LocationDB";
     public static final String ID="id";
     public static final String NAME="name";
     public static final String LAT="lati";
     public static final String LONG="lng";
 
     public DBHelper(Context context){
-        super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        super(context, "DatabaseLocat.db", null, 1);
         this.c=context;
     }
 
     @Override
     public void onCreate(SQLiteDatabase DB) {
-        String sql =
-                "CREATE TABLE IF NOT EXISTS favouriteloc("+
-                        "id INTEGER CONSTRAINT pk PRIMARY KEY AUTOINCREMENT,"+
-                        "name VARCHAR(20) NOT NULL,"+
-                        "lati DOUBLE,"+
-                        "long DOUBLE NOT NULL);";
-        DB.execSQL(sql);
+
+      DB.execSQL("create Table LocationDB(name TEXT primary key, lati double, lng double)");
+
     }
 
 
@@ -39,6 +35,11 @@ public class DBHelper extends SQLiteOpenHelper {
     }
     public void insertuserdata(String name ,double lati, double lng )
     {
+        System.out.println("The values requested to be inserted are:");
+        System.out.println("NAME:"+name);
+        System.out.println("LATITUDE:"+lati);
+        System.out.println("LONGITUDE:"+lng);
+
         SQLiteDatabase db=this.getWritableDatabase();
         ContentValues cv= new ContentValues();
         cv.put(NAME,name);
@@ -60,7 +61,7 @@ public class DBHelper extends SQLiteOpenHelper {
         cv.put(NAME,name);
         cv.put(LAT,la);
         cv.put(LONG,lo);
-        long result = db.update("favouriteloc",cv,"id=?",new String[]{id1});
+        long result = db.update("LocationDB",cv,"id=?",new String[]{id1});
         if (result == -1)
         {
             Toast.makeText(c, "Updating Failed", Toast.LENGTH_SHORT).show();

@@ -15,6 +15,7 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -39,7 +40,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private Marker currentLocation;
     List<Marker> locations = new ArrayList();
 
-    DBHelper DB=new DBHelper(MapsActivity.this);
+    DBHelper DB;
 
     FloatingActionButton fabList;
     MaterialButton btnSatelite;
@@ -54,11 +55,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
 
     protected void onCreate(Bundle savedInstanceState) {
+        DB = new DBHelper(this);
         super.onCreate(savedInstanceState);
-
         binding = ActivityMapsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
@@ -94,8 +94,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     // on below line we are creating a variable for our location
                     // where we will add our locations latitude and longitude.
                     LatLng latLng = new LatLng(address.getLatitude(), address.getLongitude());
+
                     DB.insertuserdata(location,latLng.latitude,latLng.longitude);
-                    System.out.println();
 
                     // on below line we are adding marker to that position.
                     mMap.addMarker(new MarkerOptions().position(latLng).title(location));
