@@ -29,8 +29,8 @@ public class ViewAdapter extends RecyclerView.Adapter<ViewAdapter.MyViewHolder> 
         this.name=name;
         this.latitude = latitude;
         this.longitude = longitude;
-
     }
+
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

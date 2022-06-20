@@ -1,5 +1,6 @@
 package com.example.fa_aastha_c0851622_android;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -36,17 +37,25 @@ public class ListActivity extends AppCompatActivity {
 
 
 
-        Cursor cursor = DB.getdata();
-        if (cursor.getCount() == 0) {
+        Cursor cur = DB.getdata();
+        StringBuffer buffer = new StringBuffer();
+//        while(cur.moveToNext()){buffer.append("Name :"+cur.getString(0)+"\n");
+//            buffer.append("Lati :"+cur.getString(1)+"\n");
+//            buffer.append("Longi :"+cur.getString(2)+"\n\n");
+//        }
+//        AlertDialog.Builder builder = new AlertDialog.Builder(ListActivity.this);
+//        builder.setCancelable(true);
+//        builder.setTitle("User Entries");
+//        builder.setMessage(buffer.toString());
+//        builder.show();
+
+        if (cur.getCount() == 0) {
             Toast.makeText(this, "No Products Found", Toast.LENGTH_SHORT).show();
         } else {
-            while (cursor.moveToNext()) {
-                id.add(cursor.getString(0));
-                name.add(cursor.getString(1));
-                lati.add(cursor.getString(2));
-                lng.add(cursor.getString(3));
-
-
+            while (cur.moveToNext()) {
+                name.add(cur.getString(0));
+                lati.add(cur.getString(1));
+                lng.add(cur.getString(2));
             }
         }
     }
