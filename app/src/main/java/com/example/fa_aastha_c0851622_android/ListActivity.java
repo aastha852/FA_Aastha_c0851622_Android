@@ -27,7 +27,6 @@ public class ListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_list);
         rv = findViewById(R.id.recycler_view_list);
         DB= new DBHelper(this);
-        id = new ArrayList<>();
         name = new ArrayList<>();
         lati = new ArrayList<>();
         lng = new ArrayList<>();
@@ -39,15 +38,15 @@ public class ListActivity extends AppCompatActivity {
 
         Cursor cur = DB.getdata();
         StringBuffer buffer = new StringBuffer();
-//        while(cur.moveToNext()){buffer.append("Name :"+cur.getString(0)+"\n");
-//            buffer.append("Lati :"+cur.getString(1)+"\n");
-//            buffer.append("Longi :"+cur.getString(2)+"\n\n");
-//        }
-//        AlertDialog.Builder builder = new AlertDialog.Builder(ListActivity.this);
-//        builder.setCancelable(true);
-//        builder.setTitle("User Entries");
-//        builder.setMessage(buffer.toString());
-//        builder.show();
+        while(cur.moveToNext()){buffer.append("Name :"+cur.getString(0)+"\n");
+            buffer.append("Lati :"+cur.getString(1)+"\n");
+            buffer.append("Longi :"+cur.getString(2)+"\n\n");
+        }
+        AlertDialog.Builder builder = new AlertDialog.Builder(ListActivity.this);
+        builder.setCancelable(true);
+        builder.setTitle("User Entries");
+        builder.setMessage(buffer.toString());
+        builder.show();
 
         if (cur.getCount() == 0) {
             Toast.makeText(this, "No Products Found", Toast.LENGTH_SHORT).show();
